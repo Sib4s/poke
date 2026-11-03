@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>The Binding of Mudkip - Pokémon Roguelike</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="game-wrapper">
+    <!-- Game Canvas -->
+    <canvas id="game-canvas" width="960" height="640"></canvas>
+
+    <!-- UI Overlay Layer -->
+    <div id="ui-overlay">
+      
+      <!-- Top HUD -->
+      <div class="hud-top">
+        <div class="hud-left">
+          <!-- HP Hearts -->
+          <div class="health-bar" id="health-bar"></div>
+          
+          <!-- Equipped items & stats -->
+          <div class="stats-row">
+            <div class="item-badge" id="helmet-badge" style="display: none;">
+              <img src="assets/items/rocky_helmet.png" alt="Casco Dentado">
+              <span class="item-badge-name">Casco Dentado</span>
+            </div>
+            <div id="room-name-display" style="padding-top: 4px;">Sala Inicial</div>
+          </div>
+        </div>
+
+        <!-- Minimap -->
+        <div class="minimap-container">
+          <canvas id="minimap-canvas" width="100" height="75"></canvas>
+        </div>
+      </div>
+
+      <!-- Item Pickup Banner (Isaac style) -->
+      <div id="item-banner">
+        <img id="banner-img" src="assets/items/rocky_helmet.png" alt="Item">
+        <h2 id="banner-title">¡CASCO DENTADO!</h2>
+        <p id="banner-desc">Pinchos reactivos.<br>Al recibir daño, desatas una onda expansiva de rocas.</p>
+      </div>
+
+      <!-- Bottom HUD -->
+      <div class="hud-bottom">
+        <div class="controls-hint">
+          <span>[WASD] Mover | [Flechas] o [Ratón] Disparar Pistola Agua</span>
+        </div>
+        <div class="hud-buttons">
+          <button id="btn-sound" class="hud-btn">🔊 Sonido</button>
+          <button id="btn-touch" class="hud-btn">📱 Táctil</button>
+          <button id="btn-restart" class="hud-btn">🔄 Reiniciar</button>
+        </div>
+      </div>
+
+      <!-- Mobile Touch Controls -->
+      <div id="touch-controls">
+        <div id="touch-move" class="touch-zone">
+          <div id="knob-move" class="joystick-knob"></div>
+        </div>
+        <div id="touch-shoot" class="touch-zone">
+          <div id="knob-shoot" class="joystick-knob"></div>
+        </div>
+      </div>
+
+      <!-- Loading Modal -->
+      <div id="loading-screen" class="modal-screen">
+        <h1 style="color: #4da6ff;">THE BINDING OF MUDKIP</h1>
+        <p id="loading-text">Cargando sprites de Mudkip, Poochyena y Houndour...</p>
+      </div>
+
+      <!-- Game Over Modal -->
+      <div id="gameover-screen" class="modal-screen hidden">
+        <h1 style="color: #ff4d4d;">¡MUDKIP SE HA DEBILITADO!</h1>
+        <p>Los Pokémon salvajes te han superado en la mazmorra.<br>Aprovecha el Casco Dentado y tus disparos a distancia en el siguiente intento.</p>
+        <button id="btn-retry" class="modal-btn">VOLVER A INTENTAR</button>
+      </div>
+
+      <!-- Victory Modal -->
+      <div id="victory-screen" class="modal-screen hidden">
+        <h1 style="color: #ffde59;">¡MAZMORRA DESPEJADA!</h1>
+        <p>¡Mudkip ha derrotado a todos los Poochyena y Houndour de la zona!<br>Equipado con el Casco Dentado, ¡nada puede detenerlo!</p>
+        <button id="btn-play-again" class="modal-btn">JUGAR OTRA VEZ</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
